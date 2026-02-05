@@ -79,13 +79,24 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
 | 主キーに関する定義 |<|<|<|
 | sig | Table.pk　lone Colum | 主キー列 | PRIMARY KEY |
 | fact | PrimaryKeyExists | 全てのテーブルに主キーが必ず1つ存在する | 本来は存在しない条件．主キーがある場合のテーブルに限定するために設定した制約 |
-| ユニークキーに関する定義 |< |< |< |
+| ユニークキーに関する定義 |　< |< |< |
 | sig | Table.uk set Colum | ユニークキー列 | UNIQUE |
 | fact | UniqueKeyExists | 略 |< |
 | 外部キーに関する定義 |< |< |< |
 | sig | Table.fk set Colum | 外部キー列 | FOREIGN KEY |
 | fact | ForeignKeyExists | 略 |< |
 
+<table>
+  <tr>
+    <th colspan="2">ヘッダー1</th>
+    <th>ヘッダー2</th>
+  </tr>
+  <tr>
+    <td>内容1</td>
+    <td>内容2</td>
+    <td>内容3</td>
+  </tr>
+</table>
 
 | fact | PrimaryKeyIsNotNull | 主キーはNullを取らない　|　非NULL制約 |
 | fact | PrimaryKeyIsUnique | 主キー値はレコード間で一意　|　一意性制約 |
