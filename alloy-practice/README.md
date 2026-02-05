@@ -76,8 +76,13 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
 | ---- | ---- | ---- | ---- |
 | ステータス | 要素 | | |
 | sig | Table.pk　| 主キー列 | PRIMARY KEY |
+| fact | PrimaryKeyIsColumnOfTable | 主キー列はそのテーブル自身に属する | - |
+| fact | PrimaryKeyIsNotNull | 主キーはNullを取らない　|　非NULL制約 |
+| fact | PrimaryKeyIsUnique | 主キー値はレコード間で一意　|　一意性制約 |
+| fact | PrimaryKeyExists | 全ての主キーは必ず1つ存在する | 本来は存在しない条件．主キーがある場合のテーブルを考えるために追加 |
+
 | sig | Table.uk　| ユニークキー列 | UNIQUE |
-| sig  Table.fk | 外部キー列 | FOREIGN KEY |
+| sig | Table.fk | 外部キー列 | FOREIGN KEY |
 
 
 
