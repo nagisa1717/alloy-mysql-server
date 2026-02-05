@@ -79,7 +79,7 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
     <th colspan="2">Aloy</th> <th>意味<\th> <th>MySQLにおける対応<\th>
   </tr>
   <tr>
-    <td colspan="4"> 主キーに関する定義 <\th>
+    <td colspan="4"> 主キーに関する定義
   </tr>
   <tr>
     <td> sig </td> <td> Table.pk　lone Colum </td> <td> 主キー列 </td> <td> PRIMARY KEY <\td>
@@ -89,22 +89,22 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
     <td> 本来は存在しない条件．主キーがある場合のテーブルに限定するために設定した制約 <\td>
   </tr>
   <tr>
-    <td colspan="4"> ユニークキーに関する定義 <\td>
+    <td colspan="4"> ユニークキーに関する定義
   </tr>
   <tr>
     <td> sig </td> <td> Table.uk set Colum </td> <td> ユニークキー列 </td> <td> UNIQUE <\td>
   </tr>
   <tr>
-    <td> fact </td> <td> UniqueKeyExists </td> <td colspan="2"> 略 <\td>
+    <td> fact </td> <td> UniqueKeyExists </td> <td colspan="2"> 略
   </tr>
   <tr>
-    <td colspan="4"> 外部キーに関する定義 <\td>
+    <td colspan="4"> 外部キーに関する定義
   </tr>
   <tr>
     <td> sig </td> <td> Table.fk set Colum </td> <td> 外部キー列 </td> <td> FOREIGN KEY <\td>
   </tr>
   <tr>
-    <td> fact </td> <td> ForeignKeyExists </td> <td colspan="2"> 略 <\td>
+    <td> fact </td> <td> ForeignKeyExists </td> <td colspan="2"> 略
   </tr>
 </table>
 
