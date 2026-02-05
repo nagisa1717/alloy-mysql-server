@@ -85,8 +85,8 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
     <td> sig </td> <td> Table.pk　lone Colum </td> <td> 主キー列 </td> <td> PRIMARY KEY 
   </tr>
   <tr>
-    <td> fact </td> <td> PrimaryKeyExists </td> <td> 全てのテーブルに主キーが必ず1つ存在する
-    <td> 本来は存在しない条件．<br> 主キーがある場合のテーブルに限定するために設定した制約 
+    <td> fact </td> <td> PrimaryKeyExists </td> <td> 全てのテーブルに主キーが　<br>　必ず1つ存在する
+    <td> 本来は存在しない条件．<br> 主キーがある場合に限定するための制約 
   </tr>
   <tr>
     <td colspan="4"> ユニークキーに関する定義
