@@ -59,9 +59,12 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
 | Record.table: one Table | 行は必ず1つのテーブルに属する |
 | Column.table: one Table | 列は1つのテーブルに定義される |
 | Record.values: Column -> one Value | レコードは，列に対応する値を一つとる |
+
 ここでValueはNullも含むので，`lone Value`は値を何もとらないということを意味する．
 しかしMySQLでは値の未定義は許容されないため，factにより次の制約条件を加える必要がある．
+
 | Aloy | 意味 |
+| ---- | ---- |
 | fact RecordUsesTableColumns | 全てのレコードで，値に紐ずく列はテーブルに定義されている列に含まれる |
 この制約について，詳しくは検証の1に記載する．
 
