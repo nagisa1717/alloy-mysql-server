@@ -76,7 +76,7 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
 
 <table>
   <tr>
-    <th colspan="2">Aloy</th> <th>意味<\th> <th>MySQLにおける対応
+    <th colspan="2">Aloy <th>意味<\th> <th>MySQLにおける対応
   </tr>
   <tr>
     <td colspan="4"> 主キーに関する定義
