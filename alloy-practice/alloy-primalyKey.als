@@ -1,7 +1,5 @@
 //一般的なRDBの構造定義および制約
 
-//ベースの定義；テーブル，レコード，列，値
-//sig Table {}
 sig Column { table: one Table }
 sig Record {
 	table: one Table,
@@ -10,20 +8,17 @@ sig Record {
 sig Value {}
 one sig Null extends Value {}
 
-//構造制約；レコードの値が紐ずくカラムはテーブルに定義されているカラムに含まれる必要がある
-//1. 全てのcolmnに対応するValue(null含む)がある
-//2. 親となるTable以外のcolmnを参照しない
+
 fact RecordUsesTableColumns { 
 	all r : Record |
 		r.values.Value = { c : Column | c.table = r.table }
-		//r.values.Value in { c : Column | c.table = r.table }	: 1を保証しない
-		//{ c : Column | c.table = r.table } in r.values.Value	: 2を保証しない
 }
 
-//主キー制約
 sig Table {
   pk: lone Column
 }
+
+///////////ここからPrimaryKeyについて///////////
 
 fact PrimaryKeyIsColumnOfTable {
   all t: Table |
@@ -38,6 +33,10 @@ fact PrimaryKeyIsUnique {
   all r1, r2: Record |
     r1.table = r2.table && r1 != r2 implies
       r1.values[r1.table.pk] != r2.values[r2.table.pk]
+}
+
+fact PrimaryKeyExists { //テーブルが1つのpkを持つと仮定．
+	all t: Table | one t.pk
 }
 
 fun lookupValue[r: Record, c: Column]: lone Value {
@@ -65,4 +64,4 @@ assert PrimaryKeyLookupReturnsOne {
 }
 
 //run Table {}
-check PrimaryKeyLookupReturnsOne for 5
+check PrimaryKeyLookupReturnsOne for 10
