@@ -74,17 +74,23 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
 補足するとMySQLおよびRDBでは，各キーについて，テーブルに必ず1つ以上存在するという条件は存在しない．
 しかしそれぞれの性質を調べるにあたって，各キーが存在する場合のみ考えるという前提を明示的に与える役割で「〇〇Exsists」というfactを設定している．
 
-| Aloy | | 意味 | MySQLにおける対応 |
-| ---- | ---- | ---- | ---- |
-| 主キーに関する定義 |<|<|<|
-| sig | Table.pk　lone Colum | 主キー列 | PRIMARY KEY |
-| fact | PrimaryKeyExists | 全てのテーブルに主キーが必ず1つ存在する | 本来は存在しない条件．主キーがある場合のテーブルに限定するために設定した制約 |
-| ユニークキーに関する定義 |　< |< |< |
-| sig | Table.uk set Colum | ユニークキー列 | UNIQUE |
-| fact | UniqueKeyExists | 略 |< |
-| 外部キーに関する定義 |< |< |< |
-| sig | Table.fk set Colum | 外部キー列 | FOREIGN KEY |
-| fact | ForeignKeyExists | 略 |< |
+<table>
+  <tr>
+    <th colspan="2">Aloy</th> <th>意味<\th> <th>MySQLにおける対応<\th>
+  </tr>
+  <tr>
+  <th colspan="4"> 主キーに関する定義 <\th>
+  <th> sig </th> <th> Table.pk　lone Colum </th> <th> 主キー列 </th> <th> PRIMARY KEY <\th>
+  <th> fact </th> <th> PrimaryKeyExists </th> <th> 全てのテーブルに主キーが必ず1つ存在する </th> 
+    <th> 本来は存在しない条件．主キーがある場合のテーブルに限定するために設定した制約 <\th>
+  <th colspan="4"> ユニークキーに関する定義 <\th>
+  <th> sig </th> <th> Table.uk set Colum </th> <th> ユニークキー列 </th> <th> UNIQUE <\th>
+  <th> fact </th> <th> UniqueKeyExists </th> <th colspan="2"> 略 <\th>
+  <th colspan="4"> 外部キーに関する定義 <\th>
+  <th> sig </th> <th> Table.fk set Colum </th> <th> 外部キー列 </th> <th> FOREIGN KEY <\th>
+  <th> fact </th> <th> ForeignKeyExists </th> <th colspan="2"> 略 <\th>
+</tr>
+</table>
 
 <table>
   <tr>
