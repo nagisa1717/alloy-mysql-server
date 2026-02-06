@@ -82,11 +82,11 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
     <td colspan="4"> 主キーに関する定義
   </tr>
   <tr>
-    <td> sig </td> <td> Table.pk　lone Colum </td> <td> 主キー列 </td> <td> PRIMARY KEY 
+    <td> sig </td> <td> Table.pk lone Colum </td> <td> 主キー列 </td> <td> PRIMARY KEY 
   </tr>
   <tr>
-    <td> fact </td> <td> PrimaryKeyExists </td> <td> 全てのテーブルに主キーが　<br>　必ず1つ存在する
-    <td> 本来は存在しない条件．<br> 主キーがある場合に限定するための制約 
+    <td> fact </td> <td> PrimaryKeyExists </td> <td> 全てのテーブルに主キーが<br>必ず1つ存在する
+    <td> 本来は存在しない条件．<br>主キーがある場合に限定するための制約 
   </tr>
   <tr>
     <td colspan="4"> ユニークキーに関する定義
@@ -108,26 +108,54 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
   </tr>
 </table>
 
-<table>
-  <tr>
-    <th colspan="2">ヘッダー1</th>
-    <th>ヘッダー2</th>
-  </tr>
-  <tr>
-    <td>内容1</td>
-    <td>内容2</td>
-    <td>内容3</td>
-  </tr>
-</table>
-
 | fact | PrimaryKeyIsNotNull | 主キーはNullを取らない　|　非NULL制約 |
 | fact | PrimaryKeyIsUnique | 主キー値はレコード間で一意　|　一意性制約 |
 
 ソースコード中の上記以外の制約は，仕様から推定される制約キーの前提条件を形式化したものである．  
 順番的には検証の過程で見つけ出した制約が多いが，本来ならモデル化の段階で仕様から導き出されるはずなのでこの章にまとめて書く．
 
+<table>
+  <tr>
+    <th colspan="2">Aloy <th>意味 <th>MySQLにおける対応
+  </tr>
+  <tr>
+    <td colspan="4"> 主キーに関する定義
+  </tr>
+  <tr>
+    <td> fact </td> <td> PrimaryKeyIsNotNull </td> <td> 主キーはNullを取らない　<td> 非NULL制約
+  </tr>
+  <tr>
+    <td> fact </td> <td> PrimaryKeyIsUnique </td> <td> 主キー値はレコード間で一意 </td> <td> 一意性制約 
+  </tr>
+  <tr>
+    <td colspan="4"> ユニークキーに関する定義
+  </tr>
+  <tr>
+    <td> fact </td> <td> UniqueKeyConstraint </td> <td> 値がNullでない場合にレコード間で一意 </td> <td> 一意性制約 
+  </tr>
+  <tr>
+    <td colspan="4"> 外部キーに関する定義
+  </tr>
+  <tr>
+    <td> sig </td> <td> Table.fk set Colum </td> <td> 外部キー列 </td> <td> FOREIGN KEY
+  </tr>
+  <tr>
+    <td> fact </td> <td> ForeignKeyExists </td> <td colspan="2"> 略
+  </tr>
+</table>
+
 ## 検証手法
 今回Alloyにおいては以下のステップで検証した．
-1. 
+1. 対象OSS(MySQL)のモデル化
+2. 検証する性質をassertで形式化
+3. 2で決定したassertについてcheckで反例がでないか検証
+4. 3で反例が出るなら，不足する前提制約がないか考察する
+   3で反例がでないなら，制約を弱めた時にどうなるか検証する
+
+モデル化については，前章で詳しく示した通りである．　　
+
+### 検証する性質の形式化
+
+
 
 ## 補足事項
