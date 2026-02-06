@@ -70,15 +70,20 @@ fact ForeignKeyIsNotPrimaryKey {
 //}
 
 fact ForeignKeyConstraint {
+  all t1: Table |
+	some t1.fk implies
+		some t2: Table |
+			t2.pk = t1.fk and
+			(t1.~table).values[t1.fk] in (t2.~table).values[t2.pk]
+}
+
+fact ForeignKeyConstraint {
   all r: Record |
     some r.table.fk implies
       let fkCol = r.table.fk |
         let v = r.values[fkCol] |
-          v in Null
-          or
-          some r2: Record |
-            r2.table = fkCol.table
-            and r2.values[r2.table.pk] = v
+          v = Null or
+	   v in (fkCol.table.~table).values[fkCol.table.pk]
 }
 
 assert ForeignKeyLookupReturnsSome {
