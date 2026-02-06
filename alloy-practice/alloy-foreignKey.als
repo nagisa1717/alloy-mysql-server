@@ -69,14 +69,6 @@ fact ForeignKeyIsNotPrimaryKey {
 //      one t2: Table | t2.pk = t1.fk
 //}
 
-fact ForeignKeyConstraint {
-  all t1: Table |
-	some t1.fk implies
-		some t2: Table |
-			t2.pk = t1.fk and
-			(t1.~table).values[t1.fk] in (t2.~table).values[t2.pk]
-}
-
 fact ForeignKeyValuesInPrimaryKey {
   all r: Record |
     some r.table.fk implies
