@@ -208,3 +208,9 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
 ### 課題関連ファイルの説明
 
 ### 参考文献
+* MySQLの公式リファレンス <br>
+[https://dev.mysql.com/doc/refman/8.0/ja/]
+  - 主にMySQL標準の実装に関して
+* リレーショナルデータベース入門\[第３番\]<br>
+[https://www.saiensu.co.jp/search/?isbn=978-4-7819-1390-2&y=2017]
+   - 主にRDB一般の定義および性質の根拠として
