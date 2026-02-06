@@ -77,7 +77,7 @@ fact ForeignKeyConstraint {
 			(t1.~table).values[t1.fk] in (t2.~table).values[t2.pk]
 }
 
-fact ForeignKeyConstraint {
+fact ForeignKeyValuesInPrimaryKey {
   all r: Record |
     some r.table.fk implies
       let fkCol = r.table.fk |
