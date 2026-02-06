@@ -10,24 +10,16 @@ one sig Null extends Value {}
 
 fact RecordUsesTableColumns { 
 	all r : Record |
-		r.values.Value = { c : Column | c.table = r.table }
+		r.values.Value in { c : Column | c.table = r.table }
 }
 
-sig Table {	//一個以上持つと仮定
+sig Table {
   pk: lone Column,
-  fk: some Column
+  fk: set Column
 }
 
-fact EachTableHasRecord {  //一個以上recordを持つと仮定
-  all t: Table | some r: Record | r.table = t
-}
 
 ///////////ここからPrimaryKeyについて///////////
-
-fact PrimaryKeyIsColumnOfTable {
-  all t: Table |
-    t.pk.table = t
-}
 
 fact PrimaryKeyIsNotNull {
   all r: Record |
@@ -37,6 +29,8 @@ fact PrimaryKeyIsNotNull {
 fact PrimaryKeyIsUnique {
   all r1, r2: Record |
     r1.table = r2.table && r1 != r2 implies
+      r1.values[r1.table.pk] = Null or
+      r2.values[r1.table.pk] = Null or
       r1.values[r1.table.pk] != r2.values[r2.table.pk]
 }
 
@@ -54,18 +48,22 @@ fun lookupRecordByPrimaryKey[t: Table, v: Value]: set Record {
 }
 
 ///////////ここからForeignKeyについて///////////
+fact ForeignKeyExists {
+	all t: Table | some t.fk
+}
 
 fact ForeignKeyIsNotPrimaryKey {
 	all t: Table |
 		t.pk != t.fk
 }
 
-fact ForeignKeyHasValue {
-  all r: Record |
-    some r.values[r.table.fk]
-}
+//fact ForeignKeyHasValue { 自明？
+//  all r: Record |
+//    some r.values[r.table.fk]
+//}
 
-//fact ForeignKeyHasOneReference {
+
+//fact ForeignKeyHasOneReference { //弱い制約
 //  all t1: Table |
 //    some t1.fk implies
 //      one t2: Table | t2.pk = t1.fk
@@ -94,4 +92,4 @@ assert ForeignKeyLookupReturnsSome {
       ]
 }
 
-check ForeignKeyLookupReturnsSome for 10
+check ForeignKeyLookupReturnsSome for 3

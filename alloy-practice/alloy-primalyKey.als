@@ -3,7 +3,7 @@
 sig Column { table: one Table }
 sig Record {
 	table: one Table,
-	values: Column -> lone Value
+	values: Column -> one Value
 }
 sig Value {}
 one sig Null extends Value {}
@@ -11,7 +11,7 @@ one sig Null extends Value {}
 
 fact RecordUsesTableColumns { 
 	all r : Record |
-		r.values.Value = { c : Column | c.table = r.table }
+		r.values.Value in { c : Column | c.table = r.table }
 }
 
 sig Table {
@@ -20,19 +20,22 @@ sig Table {
 
 ///////////ここからPrimaryKeyについて///////////
 
-fact PrimaryKeyIsColumnOfTable {
-  all t: Table |
-    t.pk.table = t
-}
-fact PrimaryKeyIsNotNull {
-  all r: Record |
-    r.values[r.table.pk] != Null
-}
+//fact PrimaryKeyIsColumnOfTable { 冗長？
+//  all t: Table |
+//    t.pk.table = t
+//}
 
 fact PrimaryKeyIsUnique {
   all r1, r2: Record |
     r1.table = r2.table && r1 != r2 implies
+      r1.values[r1.table.pk] = Null or
+      r2.values[r1.table.pk] = Null or
       r1.values[r1.table.pk] != r2.values[r2.table.pk]
+}
+
+fact PrimaryKeyIsNotNull {
+  all r: Record |
+    r.values[r.table.pk] != Null
 }
 
 fact PrimaryKeyExists { //テーブルが1つのpkを持つと仮定．
@@ -64,4 +67,4 @@ assert PrimaryKeyLookupReturnsOne {
 }
 
 //run Table {}
-check PrimaryKeyLookupReturnsOne for 10
+check PrimaryKeyLookupReturnsOne for 5

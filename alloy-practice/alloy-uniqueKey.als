@@ -3,26 +3,21 @@
 sig Column { table: one Table }
 sig Record {
 	table: one Table,
-	values: Column -> lone Value
+	values: Column -> one Value
 }
 sig Value {}
 one sig Null extends Value {}
 
 fact RecordUsesTableColumns { 
 	all r : Record |
-		r.values.Value = { c : Column | c.table = r.table }
+		r.values.Value in { c : Column | c.table = r.table }
 }
 
 sig Table {
-  uk: lone Column
+  uk: set Column
 }
 
 ///////////ここからUniqueKeyについて///////////
-
-fact UniqueKeyIsColumnOfTable {
-  all t: Table |
-    t.uk.table = t
-}
 
 //PrimarkKeyとの違い：Nullを取りえるか
 //fact PrimaryKeyIsNotNull {
