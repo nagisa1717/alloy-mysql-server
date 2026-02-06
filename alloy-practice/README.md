@@ -108,9 +108,6 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
   </tr>
 </table>
 
-| fact | PrimaryKeyIsNotNull | 主キーはNullを取らない　|　非NULL制約 |
-| fact | PrimaryKeyIsUnique | 主キー値はレコード間で一意　|　一意性制約 |
-
 ソースコード中の上記以外の制約は，仕様から推定される制約キーの前提条件を形式化したものである．  
 順番的には検証の過程で見つけ出した制約が多いが，本来ならモデル化の段階で仕様から導き出されるはずなのでこの章にまとめて書く．
 
@@ -140,7 +137,7 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
     <td> fact </td> <td>　ForeignKeyIsNotPrimaryKey </td> <td> 外部キーは自身のテーブルの主キーを参照しない </td> <td> デフォルトでは自己参照型は許容されない
   </tr>
   <tr>
-    <td> fact </td> <td> ForeignKeyConstraint </td> 外部キーの値はNullか，参照するテーブルの<br>主キーに存在するいずれかの値と一致する <td> 
+    <td> fact </td> <td> ForeignKeyConstraint </td> <td> 外部キーの値はNullか，参照するテーブルの<br>主キーに存在するいずれかの値と一致する </td> - <td>
   </tr>
 </table>
 
