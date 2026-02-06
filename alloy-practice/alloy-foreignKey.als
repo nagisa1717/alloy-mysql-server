@@ -86,7 +86,7 @@ fact ForeignKeyValuesInPrimaryKey {
 	   v in (fkCol.table.~table).values[fkCol.table.pk]
 }
 
-assert ForeignKeyLookupReturnsSome {
+assert ForeignKeyLookupReturnsOneRecord {
   all r: Record |
     some r.table.fk
     and r.values[r.table.fk] not in Null
@@ -97,4 +97,4 @@ assert ForeignKeyLookupReturnsSome {
       ]
 }
 
-check ForeignKeyLookupReturnsSome for 3
+check ForeignKeyLookupReturnsOneRecord for 3
