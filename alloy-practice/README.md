@@ -151,7 +151,7 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
 
 ### 検証する性質の形式化
 
-性質を記述するにあたって，以下2つのfunctionを導入する． 
+性質を記述するにあたって，RDBの操作的な視点であることを明示するため以下2つのfunctionを導入する． 
 
 | Aloy | 意味 |
 | ---- | ---- |
@@ -164,6 +164,13 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
 * `SELECT * FROM 'table' WHERE 'column' = 'value';`
   
 的な役割をしていると考えると理解しやすい．
+これらを利用して，前章に列挙した性質を形式化していくと以下のassert文にあるように書き下せる．
+| Aloy | 対応 |
+| ---- | ---- |
+| ValueIsDecisivePerRecordAndColumn | 性質1 |
+| PrimaryKeyLookupReturnsOne | 性質2 |
+| UniqueKeyLookupReturnsOneExpectNull <br>↑の弱化版 | 性質2(+) |
+| ForeignKeyLookupReturnsOneRecord | 性質3 |
 
 ### 反例が出ないか検証した結果
 予想される設計から制約を書き下し，その制約下でcheckが通るかを検証した．  
