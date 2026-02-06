@@ -154,9 +154,10 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
 性質を記述するにあたって，以下2つのfunctionを導入する．  
 
 意味的にはデータベースの選択(SELCT)操作をモデル化したものである．前者と後者それぞれ
-* `SELECT 'column' FROM 'table' WHERE ~ ;`
+* `SELECT 'column' FROM 'table' WHERE ~ ;`<br>
   （ユーザー操作ではレコードの直接的な指定は行わないが，内部操作では実際行われている処理）
 * `SELECT * FROM 'table' WHERE 'column' = 'value';`
+  
 的な役割をしていると考えると理解しやすい．
 
 ### 反例が出ないか検証した結果
