@@ -137,10 +137,10 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
     <td colspan="4"> 外部キーに関する定義
   </tr>
   <tr>
-    <td> sig </td> <td> Table.fk set Colum </td> <td> 外部キー列 </td> <td> FOREIGN KEY
+    <td> fact </td> <td>　ForeignKeyIsNotPrimaryKey </td> <td> 外部キーは自身のテーブルの主キーを参照しない </td> <td> デフォルトでは自己参照型は許容されない
   </tr>
   <tr>
-    <td> fact </td> <td> ForeignKeyExists </td> <td colspan="2"> 略
+    <td> fact </td> <td> ForeignKeyConstraint </td> 外部キーの値はNullか，参照するテーブルの<br>主キーに存在するいずれかの値と一致する <td> 
   </tr>
 </table>
 
