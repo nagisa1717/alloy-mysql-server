@@ -151,7 +151,12 @@ MySQLの使用を含めRDBは，利用者が「当然の前提」としている
 
 ### 検証する性質の形式化
 
-性質を記述するにあたって，以下2つのfunctionを導入する．  
+性質を記述するにあたって，以下2つのfunctionを導入する． 
+
+| Aloy | 意味 |
+| ---- | ---- |
+| fun lookupValue<br>\[r: Record, c: Column\]: lone Value | レコードと列を指定して，対応する値があれば返す |
+| fun lookupRecordByPrimaryKey<br>\[t: Table, v: Value\]: set Record | テーブルと値を指定して，対応するレコードがあれば全て返す |
 
 意味的にはデータベースの選択(SELCT)操作をモデル化したものである．前者と後者それぞれ
 * `SELECT 'column' FROM 'table' WHERE ~ ;`<br>
